@@ -15,17 +15,6 @@ This repository accompanies a study that examines how the method used to initial
 
 A baseline scenario with no vaccination is also included. Outcomes are compared at the macro level (epidemic trajectory) and meso level (infection by demographic group and census tract).
 
-| | |
-|---|---|
-| Study area | Fairfax County and the City of Fairfax, Virginia (261 census tracts) |
-| Agents | 893,834 adults aged 18+ |
-| Simulation length | 50 days at hourly time steps (1,200 ticks) |
-| Runs | 30 independent runs per scenario |
-| Scenarios | Baseline (no behavior), uniform, synthesized |
-
----
-
-
 ## Data
 
 ### Data sources
@@ -63,79 +52,44 @@ Run the steps in order. Steps 1–3 require the restricted UAS data; step 4 can 
 
 ### 1. Generate the synthetic population
 
-```bash
-[TODO: command]
-```
-
 Fits UAS 282 records to ACS tract-level marginals (sex, race/ethnicity, age, education, household income) using IPF, and assigns vaccination under the uniform and synthesized approaches.
 
 ### 2. Assign mobility
-
-```bash
-[TODO: command]
-```
 
 Matches each agent to an NHTS trip chain based on demographic characteristics and assigns home, work, and school locations.
 
 ### 3. Run the ABM
 
-```bash
-[TODO: command for running all scenarios]
-```
+Runs 30 independent runs for each scenario.
 
-Runs 30 independent runs for each scenario using the parameters and seeds in `config/`. [TODO: note where outputs are written.]
-
-### 4. Analysis, figures, and tables
-
-```bash
-[TODO: command]
-```
+### 4. Analysis
 
 Computes the IPF fit statistics, logistic regressions and Wald z-tests, tract-level statistics, and comparisons with observed data, and writes all figures and tables.
 
 ---
 
-## Figures and tables
+## ABM description
+ 
+The model is described in full in Atwal et al. (2026) and its [original repository](https://github.com/heykuldip/mobility-affects-disease).
 
-| Item | Description | Script |
-|---|---|---|
-| Figure 1 | Framework of behavior initialization approaches | `figures/[TODO]` |
-| Figure 2 | [TODO] | `figures/[TODO]` |
-| Figure 3 | [TODO] | `figures/[TODO]` |
-| Figure 4 | Epidemic curves by scenario | `figures/[TODO]` |
-| … | … | … |
-| Table 1 | [TODO] | `tables/[TODO]` |
-| Table S1 | UAS survey sample characteristics | `tables/[TODO]` |
-| Table S2 | ACS tract-level summary statistics | `tables/[TODO]` |
-| Table S3 | Synthetic population composition and vaccination | `tables/[TODO]` |
-| Table S4 | Mobility characteristics | `tables/[TODO]` |
-| Table S5 | Goodness of fit to ACS and observed vaccination | `tables/[TODO]` |
-| Table S6 | Epidemic summary metrics | `tables/[TODO]` |
-| Table S7 | Vaccination logistic regression | `tables/[TODO]` |
-| Table S8 | Infection by demographic group | `tables/[TODO]` |
-| Table S9 | Infection logistic regression and Wald tests | `tables/[TODO]` |
-| Table S10 | Tract-level vaccination | `tables/[TODO]` |
-| Table S11 | Tract-level infection | `tables/[TODO]` |
-
----
-
-## Model description
-
-[TODO: link to the ODD protocol if included, e.g. `docs/ODD.md`.]
-
-Key features:
-
+Main features of the original model:
+ 
 - Agents move among home, work, school, and activity locations at hourly time steps according to their assigned trip chains.
-- When *n* agents are present at a location, each agent interacts with up to log₂(*n*) others, rounded to the nearest integer.
-- Transmission probability is 0.10 per contact per time step.
+- Agents interact at POIs, determined from trip chains, where disease spread can occur.
+  
+Additions made for this study:
+- Agents are drawn from the synthetic populations generated here, carrying their demographic attributes, home tracts, and vaccination status.
 - Vaccinated agents are fully protected from infection.
-- [TODO: number of initially infected agents, disease states and durations.]
+
+| | |
+|---|---|
+| Study area | Fairfax County and the City of Fairfax, Virginia (261 census tracts) |
+| Agents | 893,834 adults aged 18+ |
+| Simulation length | 50 days at hourly time steps (1,200 ticks) |
+| Runs | 30 independent runs per scenario |
+| Scenarios | Baseline (no behavior), uniform, synthesized |
 
 ---
-
-## License
-
-Code is released under the [TODO: e.g. MIT License]. Model outputs in `outputs/` are released under [TODO: e.g. CC BY 4.0]. Input data remain subject to the terms of their original providers.
 
 ## Citation
 
