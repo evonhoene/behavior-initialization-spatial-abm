@@ -1,6 +1,6 @@
-# health-behavior-initialization-abm
+# Initializing Health Behaviors for Spatial ABMs of Disease Spread
 
-Code and data for comparing uniform assignment and relationship-preserving population synthesis for initializing health behaviors in a spatial agent-based model (ABM) of COVID-19.
+Code and data for comparing uniform assignment and joint-distribution population synthesis for initializing health behaviors in a spatial agent-based model (ABM) of COVID-19.
 
 > **Note for reviewers:** This repository has been anonymized for double-anonymized peer review. Author information will be added after review.
 
@@ -8,10 +8,10 @@ Code and data for comparing uniform assignment and relationship-preserving popul
 
 ## Overview
 
-This repository accompanies a study that examines how the method used to initialize a health behavior (COVID-19 vaccination intention) in a synthetic population affects the outputs of a spatial ABM. Two approaches are compared using the same synthetic population, mobility patterns, and disease model, differing only in how vaccination is assigned:
+This repository accompanies a study that examines how the method used to initialize a health behavior (COVID-19 vaccination intention) in a synthetic population affects the simulated disease outcomes from a spatial ABM. Two approaches are compared using the same synthetic population, mobility patterns, and disease model, differing only in how vaccination is assigned:
 
 - **Uniform assignment** – every agent has the same probability of being vaccinated, independent of demographic attributes and location.
-- **Synthesized assignment (relationship-preserving population synthesis)** – vaccination is assigned jointly with demographic attributes and geography by fitting individual survey records to census tract-level demographic constraints using iterative proportional fitting (IPF).
+- **Synthesized assignment (joint-distribution population synthesis)** – vaccination is assigned jointly with demographic attributes and geography by fitting individual survey records to census tract-level demographic constraints using iterative proportional fitting (IPF).
 
 A baseline scenario with no vaccination is also included. Outcomes are compared at the macro level (epidemic trajectory) and meso level (infection by demographic group and census tract).
 
@@ -25,51 +25,6 @@ A baseline scenario with no vaccination is also included. Outcomes are compared 
 
 ---
 
-## Repository structure
-
-```
-.
-├── README.md
-├── LICENSE
-├── environment.yml              # software environment
-├── config/                      # parameters and random seeds for each scenario
-│   ├── baseline.yaml
-│   ├── uniform.yaml
-│   └── synthesized.yaml
-├── src/
-│   ├── 01_population_synthesis/ # IPF and vaccination assignment
-│   ├── 02_mobility/             # NHTS trip chain assignment
-│   ├── 03_abm/                  # agent-based model
-│   └── 04_analysis/             # regressions, Wald tests, tract statistics, fit
-├── figures/                     # one script per manuscript figure
-├── tables/                      # one script per manuscript and supplementary table
-├── data/
-│   ├── README.md                # how to obtain each input dataset
-│   ├── public/                  # publicly available inputs
-│   └── restricted/              # empty; restricted data are not distributed
-└── outputs/                     # model outputs used in the paper
-```
-
----
-
-## Requirements
-
-- [TODO: language and version, e.g. Python 3.11]
-- [TODO: ABM platform, if applicable]
-- Package versions are listed in `environment.yml`.
-
-To create the environment:
-
-```bash
-conda env create -f environment.yml
-conda activate behavior-abm
-```
-
-[TODO: adjust if using pip/requirements.txt or another platform.]
-
-**Hardware and run time:** [TODO: e.g. one model run takes approximately X hours on Y; all 90 runs take approximately Z.]
-
----
 
 ## Data
 
