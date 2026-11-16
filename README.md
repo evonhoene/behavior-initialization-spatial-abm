@@ -1,6 +1,6 @@
 # Initializing Health Behaviors for Spatial ABMs of Disease Spread
 
-Code and data for comparing uniform assignment and joint-distribution population synthesis for initializing health behaviors in a spatial agent-based model (ABM) of COVID-19.
+Code and data for comparing uniform assignment and joint-distribution population synthesis for initializing health behaviors in a spatial agent-based model (ABM) of infectious disease spread.
 
 > **Note for reviewers:** This repository has been anonymized for double-anonymized peer review. Author information will be added after review.
 
@@ -14,6 +14,34 @@ This repository accompanies a study that examines how the method used to initial
 - **Synthesized assignment (joint-distribution population synthesis)** – vaccination is assigned jointly with demographic attributes and geography by fitting individual survey records to census tract-level demographic constraints using iterative proportional fitting (IPF).
 
 A baseline scenario with no vaccination is also included. Outcomes are compared at the macro level (epidemic trajectory) and meso level (infection by demographic group and census tract).
+
+### Synthetic Population Generation
+
+Programming Language: R
+ 
+The population synthesis code was adapted from the IPF-based method developed by Von Hoene et al. (2025) for generating synthetic populations with public health characteristics:
+ 
+> Von Hoene, E. et al. (2025) 'Synthetic population generation with public health characteristics for spatial agent-based models', *PLOS Computational Biology*, 21(3), e1012439. https://doi.org/10.1371/journal.pcbi.1012439
+>
+> Original code: https://github.com/evonhoene/Population-Generation-for-Public-Health-ABMs
+ 
+For this study, the original code was adapted to generate the synthetic population for the study area from UAS survey 282 and 2015–2019 ACS data, and to assign vaccination under both the synthesized and uniform approaches. The scripts in this repository are the adapted R scripts for this study.  
+ 
+### Spatial ABM of Infectious Disease Spread
+
+Programming Language: Python and Repast4Py
+ 
+The ABM used in this study was developed by Atwal et al. (2026) to examine how mobility assumptions shape contact networks and epidemic outcomes:
+ 
+> Atwal, K.S. et al. (2026) 'Mobility and Contact Networks Shape Epidemic Outcomes: A Large-Scale Agent-Based Modeling Study', *arXiv*. https://doi.org/10.48550/arXiv.2607.26217
+>
+> Original code: https://github.com/heykuldip/mobility-affects-disease
+ 
+For this study, the original model was used, but only adapted only to:
+ 
+1. incorporate the synthetic populations generated here, including their demographic attributes and vaccination assignments, and
+2. represent the effect of vaccination behavior on infection.
+All other model components, including agent movement, contact formation, and disease transmission, follow the original implementation. Readers interested in the model's design and its mobility assumptions should refer to Atwal et al. (2026) and the original repository.
 
 ## Data
 
@@ -68,28 +96,7 @@ Computes the IPF fit statistics, logistic regressions and Wald z-tests, tract-le
 
 ---
 
-## ABM description
- 
-The model is described in full in Atwal et al. (2026) and its [original repository](https://github.com/heykuldip/mobility-affects-disease).
 
-Main features of the original model:
- 
-- Agents move among home, work, school, and activity locations at hourly time steps according to their assigned trip chains.
-- Agents interact at POIs, determined from trip chains, where disease spread can occur.
-  
-Additions made for this study:
-- Agents are drawn from the synthetic populations generated here, carrying their demographic attributes, home tracts, and vaccination status.
-- Vaccinated agents are fully protected from infection.
-
-| | |
-|---|---|
-| Study area | Fairfax County and the City of Fairfax, Virginia (261 census tracts) |
-| Agents | 893,834 adults aged 18+ |
-| Simulation length | 50 days at hourly time steps (1,200 ticks) |
-| Runs | 30 independent runs per scenario |
-| Scenarios | Baseline (no behavior), uniform, synthesized |
-
----
 
 ## Citation
 
