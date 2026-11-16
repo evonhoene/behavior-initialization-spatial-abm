@@ -74,9 +74,7 @@ The UAS microdata, Advan data, and [TODO: case data] cannot be redistributed und
 
 ---
 
-## Reproducing the results
-
-Run the steps in order. Steps 1–3 require the restricted UAS data; step 4 can be run directly from the outputs included in this repository.
+## Process for this study
 
 ### 1. Generate the synthetic population
 
@@ -86,13 +84,13 @@ Fits UAS 282 records to ACS tract-level marginals (sex, race/ethnicity, age, edu
 
 Matches each agent to an NHTS trip chain based on demographic characteristics and assigns home, work, and school locations.
 
-### 3. Run the ABM
+### 3. Run the ABM and get outcomes
 
 Runs 30 independent runs for each scenario.
 
 ### 4. Analysis
 
-Computes the IPF fit statistics, logistic regressions and Wald z-tests, tract-level statistics, and comparisons with observed data, and writes all figures and tables.
+Computes the macro and mesolevel outcomes
 
 ---
 
