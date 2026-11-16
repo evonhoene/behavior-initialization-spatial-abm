@@ -1,0 +1,22 @@
+stop.at: 1200
+pop_size: 889984
+
+
+agent_log_file: 'output/SYNTHESIZED_vaccine_batch_low_infection_rate' # this adds .csv at the end of the file name
+
+input_agents: '/scratch/evonhoen/REPAST4PY/synpops_affects_disease/input/updated/uas282_ACS2019_population_with_NHTS_trip_chains_SYNTHESIZED_vaccine_behavior.csv'
+input_buildings: '/scratch/evonhoen/REPAST4PY/synpops_affects_disease/input/updated/input_buildings_ffx.csv'
+input_dwell_time: '/scratch/evonhoen/REPAST4PY/synpops_affects_disease/input/updated/trip_sequences.json'
+input_restaurants: '/scratch/evonhoen/REPAST4PY/synpops_affects_disease/input/updated/restaurants_dict.json'
+input_recreations: '/scratch/evonhoen/REPAST4PY/synpops_affects_disease/input/updated/recreation_dict.json'
+input_errands: '/scratch/evonhoen/REPAST4PY/synpops_affects_disease/input/updated/errands_dict.json'
+input_hospitals: '/scratch/evonhoen/REPAST4PY/synpops_affects_disease/input/updated/hospitals_dict.json'
+
+start_time: '2024-01-01T00:00:00'
+infectious_start_rate: 0.0169
+infection_chance: 0.05
+infection_chance_with_vaccine: 0.00
+exposed_duration: (1,2) # uniform(LB, UB)
+infection_duration: (1,5)
+immunity_duration: (10,20)
+dwell_time: (1,5)
