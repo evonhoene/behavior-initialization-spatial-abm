@@ -115,7 +115,6 @@ All other components, including agent movement, contact formation, and disease t
 | Advan Weekly Patterns, 2019 | Destination assignment and visitation probabilities | Commercial license; not redistributed |
 | Fairfax County building footprints, 2024 | Residential and workplace locations | Public ([Fairfax County GIS](https://data-fairfaxcountygis.opendata.arcgis.com/datasets/Fairfaxcountygis::buildings-1/about)) |
 | Observed COVID-19 case rates, July 2021 | External comparison of simulated infection patterns | Fairfax County Government, from VEDSS records, via the [ARPA Recovery Index](https://www.arcgis.com/home/item.html?id=a6b56a242290435e9ec94cce172b0023) |
-| Observed COVID-19 vaccination uptake, December 2021 | External comparison of simulated vaccination patterns | **[Add source]** |
 
 ### 4.2. Materials included
 
@@ -156,14 +155,9 @@ Simulate disease spread under three scenarios, with 30 independent runs each and
 - Census tract-level vaccination and infection patterns, including spatial autocorrelation.
 - Comparisons with observed COVID-19 vaccination uptake and case rates.
 
----
-
-## 6. License
-
-**[Add license]** For example, code under the MIT License and data and outputs under CC BY 4.0. Input datasets remain subject to the terms of their original providers.
 
 ---
 
-## 7. Citation
+## 6. Citation
 
 Citation information for the accompanying manuscript will be added after peer review. Please also cite the original population synthesis method (Von Hoene et al., 2025) and spatial ABM (Atwal et al., 2026) listed in [Section 3](#3-code-and-model-components).
